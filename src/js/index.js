@@ -1,12 +1,25 @@
-//import react into the bundle
-import React from "react";
-import ReactDOM from "react-dom";
+import React, { useState } from 'react';
+import ReactDOM from 'react-dom';
+import "../styles/index.css"; 
+const TrafficLight = () => {
+  const [color, setColor] = useState('red');
 
-// include your styles into the webpack bundle
-import "../styles/index.css";
+  return (
+    <div className="traffic-light">
+      <div
+        className={`light red ${color === 'red' ? 'active' : ''}`}
+        onClick={() => setColor('red')}
+      ></div>
+      <div
+        className={`light yellow ${color === 'yellow' ? 'active' : ''}`}
+        onClick={() => setColor('yellow')}
+      ></div>
+      <div
+        className={`light green ${color === 'green' ? 'active' : ''}`}
+        onClick={() => setColor('green')}
+      ></div>
+    </div>
+  );
+};
 
-//import your own components
-import Home from "./component/home.jsx";
-
-//render your react application
-ReactDOM.render(<Home />, document.querySelector("#app"));
+ReactDOM.render(<TrafficLight />, document.querySelector('#app'));
